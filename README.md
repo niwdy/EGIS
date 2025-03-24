@@ -1,2 +1,1 @@
-# EGIS
-EGIS Management System
+# EGIS_Management
