@@ -1,11 +1,13 @@
 ﻿using Domain.Entities;
 using Infrastructure.Persistence.Repository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TOIMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("AllowCors")]
     public class MasterTableCodeController : Controller
     {
         private readonly IUnitOfWork _unitofwork;
@@ -14,8 +16,8 @@ namespace TOIMS.API.Controllers
             _unitofwork = unitofwork;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(MasterTableCode tableCode)
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromBody] MasterTableCode tableCode)
         {
             if (!ModelState.IsValid)
             {
@@ -25,7 +27,8 @@ namespace TOIMS.API.Controllers
             var createDTO = new MasterTableCode()
             {
                 Description = tableCode.Description,
-                Subcode = tableCode.Subcode
+                Subcode = tableCode.Subcode,
+                Createdat = DateTime.Now,
             };
 
             await _unitofwork.MasterCode.CreateAsync(createDTO);

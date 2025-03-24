@@ -23,16 +23,22 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowCors", policy =>
     {
-        policy.AllowAnyOrigin()
+
+        policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+              .AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
 });
 
 var app = builder.Build();
-app.UseCors("AllowAll");
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors("AllowCors");
 app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
