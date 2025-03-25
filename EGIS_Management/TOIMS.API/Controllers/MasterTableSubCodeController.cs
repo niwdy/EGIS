@@ -14,7 +14,7 @@ namespace TOIMS.API.Controllers
                _unitofwork = unitofwork;
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(MasterTableSubCode tableSubCode)
         {
             if (!ModelState.IsValid)
@@ -34,14 +34,14 @@ namespace TOIMS.API.Controllers
             return Ok(mCode);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(int masterSubCodeId)
         {
             var mCodes = await _unitofwork.SubCode.GetById(masterSubCodeId);
             return Ok(mCodes);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int masterSubCodeId)
         {
             var mCodeData = await _unitofwork.SubCode.GetById(masterSubCodeId);
@@ -55,22 +55,16 @@ namespace TOIMS.API.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{id:int}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int masterSubCodeId, MasterTableSubCode masterSubCode)
         {
             var mSubCodeData = await _unitofwork.SubCode.GetById(masterSubCodeId);
 
             if (mSubCodeData != null)
             {
-               mSubCodeData.Description1 = masterSubCode.Description1;
+                mSubCodeData.Description = masterSubCode.Description;
                 mSubCodeData.SubCode= masterSubCode.SubCode;
-                mSubCodeData.Description2 = masterSubCode.Description2;
-                mSubCodeData.Description3 = masterSubCode.Description3;
-                mSubCodeData.Description4 = masterSubCode.Description4;
-                mSubCodeData.Description5 = masterSubCode.Description5;
-                mSubCodeData.Description6 = masterSubCode.Description6;
-                mSubCodeData.Description7 = masterSubCode.Description7;
-
+              
                 return Ok();
             }
             return BadRequest();

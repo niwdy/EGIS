@@ -27,7 +27,7 @@ namespace TOIMS.API.Controllers
             var createDTO = new MasterTableCode()
             {
                 Description = tableCode.Description,
-                Subcode = tableCode.Subcode,
+                Code = tableCode.Code,
                 Createdat = DateTime.Now,
             };
 
@@ -65,14 +65,14 @@ namespace TOIMS.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Domain.Entities.MasterTableCode masterCode)
+        public async Task<IActionResult> Update(int id,MasterTableCode masterCode)
         {
             var mCodeData = await _unitofwork.MasterCode.GetById(id);
 
             if (mCodeData != null)
             {
                 mCodeData.Description = masterCode.Description;
-                mCodeData.Subcode = masterCode.Subcode;
+                mCodeData.Code = masterCode.Code;
                 mCodeData.Createdat = DateTime.Now;
 
                 _unitofwork.MasterCode.Update(mCodeData);
