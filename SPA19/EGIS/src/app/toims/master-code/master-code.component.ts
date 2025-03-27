@@ -7,9 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MastercodeService } from '../services/mastercode.service';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dialog.component';
 
