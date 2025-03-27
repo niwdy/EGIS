@@ -7,9 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MastercodeService } from '../services/mastercode.service';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dialog.component';
 
@@ -28,7 +26,7 @@ import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dia
   styleUrl: './master-code.component.css'
 })
 export class MasterCodeComponent implements OnInit {
-  displayedColumns: string[] = ['id','subcode', 'description','actions']
+  displayedColumns: string[] = ['id','code', 'description','actions']
   dataSource!: MatTableDataSource<Mastercode>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;

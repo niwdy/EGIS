@@ -1,7 +1,7 @@
 import { Component, Inject, } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { Mastercode } from '../models/mastercode';
@@ -33,7 +33,7 @@ export class MasterCodeDialogComponent {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      subcode:[data.subcode || '',[Validators.required]],
+      code:[data.code || '',[Validators.required]],
       description:[data.description || '',[Validators.required]],
      
     })
