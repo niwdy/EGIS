@@ -33,7 +33,7 @@ export class MasterCodeDialogComponent {
     this.isEditMode=!!data.id;
     this.form=this.fb.group({
       id:[data.id],
-      subcode:[data.subcode || '',[Validators.required]],
+      code:[data.code || '',[Validators.required]],
       description:[data.description || '',[Validators.required]],
      
     })

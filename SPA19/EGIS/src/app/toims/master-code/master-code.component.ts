@@ -28,7 +28,7 @@ import { MasterCodeDialogComponent } from '../master-code-dialog/master-code-dia
   styleUrl: './master-code.component.css'
 })
 export class MasterCodeComponent implements OnInit {
-  displayedColumns: string[] = ['id','subcode', 'description','actions']
+  displayedColumns: string[] = ['id','code', 'description','actions']
   dataSource!: MatTableDataSource<Mastercode>;
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
